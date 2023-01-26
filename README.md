@@ -1,0 +1,3 @@
+- https://redis.io/docs/manual/patterns/distributed-locks/
+- https://github.com/joanvila/aioredlock
+- https://github.com/joeferner/redis-commander
