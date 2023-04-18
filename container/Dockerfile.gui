@@ -3,7 +3,7 @@ FROM fedora:35
 # Default Redis Commander port
 EXPOSE 8081
 
-RUN yum install -y --setopt=tsflags=nodocs --nogpgcheck npm \
+RUN yum install -y --setopt=tsflags=nodocs --nogpgcheck npm redis \
     && npm install -g redis-commander \
     && chown 1001:1001 /usr/local/lib/node_modules/redis-commander/config/ \
     && yum -y clean all --enablerepo='*'
