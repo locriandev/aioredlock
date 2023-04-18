@@ -6,8 +6,13 @@ EXPOSE 8081
 RUN yum install -y --setopt=tsflags=nodocs --nogpgcheck npm redis \
     && npm install -g redis-commander \
     && chown 1001:1001 /usr/local/lib/node_modules/redis-commander/config/ \
-    && yum -y clean all --enablerepo='*'
+    && yum -y clean all --enablerepo='*' \
+    && mkdir -p /workspace/redis-ui \
+    && chown 1001:1001 /workspace/redis-ui
+
+WORKDIR /workspace/redis-ui
+COPY container/run.sh .
+RUN chmod a+x run.sh
 
 USER 1001
-
-CMD ["redis-commander"]
+CMD ["./run.sh"]
